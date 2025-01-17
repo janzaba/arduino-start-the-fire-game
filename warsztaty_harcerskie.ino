@@ -1,8 +1,9 @@
-#include <Wire.h>
 #include <Adafruit_SH110X.h>
 #include <Adafruit_GFX.h>
+#include <Arduino.h>
 #include <gfxfont.h>
 #include <Preferences.h>
+#include <Wire.h>
 
 #define SCREEN_WIDTH 128
 #define SCREEN_HEIGHT 64
@@ -13,6 +14,7 @@ Adafruit_SH1106G display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
 const int sensorPin = 34; // Pin czujnika odległości
 const int buttonPin = 15; // Pin przycisku
+const int buzzerPin = 5; // Pin podłączony do sygnału IN buzzera
 const int samplingTime = 100;
 
 unsigned long previousMillis = 0;
@@ -30,6 +32,27 @@ const int ledPins[] = {25, 26, 27, 14, 12, 13, 33, 32, 4, 2};
 const int numLeds = sizeof(ledPins) / sizeof(ledPins[0]);
 
 Preferences preferences;
+
+// Nuty i ich częstotliwości
+#define NOTE_A0  28
+#define NOTE_B1  62
+#define NOTE_D2  73
+#define NOTE_F2  87
+#define NOTE_G1  49
+
+#define TRANSPOSE 2
+
+// Struktura melodii: {nuta, czas trwania w ms}
+int melody[][2] = {
+  {NOTE_G1, 250}, {NOTE_B1, 250},                 // "Pło-nie"
+  {NOTE_D2, 500}, {NOTE_F2, 250}, {NOTE_D2, 250}, // "og-ni-sko"
+  {NOTE_B1, 500}, {NOTE_D2, 250}, {NOTE_B1, 250}, // "i szu-mią"
+  {NOTE_G1, 500}, {NOTE_A0, 500}                  // "knie-je"
+};
+
+// Liczba nut w melodii
+int numNotes = sizeof(melody) / sizeof(melody[0]);
+
 
 void setup() {
   Serial.begin(115200);
@@ -61,6 +84,8 @@ void setup() {
 
   // Inicjalizacja przycisku
   pinMode(buttonPin, INPUT_PULLUP);
+
+  pinMode(buzzerPin, OUTPUT); // Konfiguracja buzzera jako wyjścia
 
   // Wyświetl ekran powitalny na start
   displayWelcomeScreen();
@@ -107,8 +132,20 @@ void handleButton() {
       isButtonHeld = false;
 
       if (pressDuration < 30000) { // Krótkie wciśnięcie
-        if (ogniskoZapalone) {
-          // Reset gry
+        if (gameStarted) {
+          // Reset gry w trakcie rozgrywki
+          ogniskoZapalone = false;
+          gameStarted = false;
+          ogniskoLevel = 0.0;
+          startTime = 0;
+          finishTime = 0;
+          for (int i = 0; i < numLeds; i++) {
+            digitalWrite(ledPins[i], LOW); // Wyłącz wszystkie LED
+          }
+          displayWelcomeScreen();
+          Serial.println("Gra została zresetowana podczas rozgrywki!");
+        } else if (ogniskoZapalone) {
+          // Reset gry po sukcesie
           ogniskoZapalone = false;
           gameStarted = false;
           ogniskoLevel = 0.0;
@@ -283,6 +320,8 @@ void updateGameLogic() {
 }
 
 void successSignal() {
+  playVictoryMelody(); // Odgrywanie melodii zwycięstwa
+
   for (int j = 0; j < 2; j++) {
     for (int i = 0; i < numLeds; i++) {
       digitalWrite(ledPins[i], HIGH);
@@ -296,4 +335,22 @@ void successSignal() {
   for (int i = 0; i < numLeds; i++) {
     digitalWrite(ledPins[i], HIGH);
   }
+}
+
+// Funkcja odgrywająca dźwięk zwycięstwa
+void playVictoryMelody() {
+  for (int i = 0; i < numNotes; i++) {
+    int note = melody[i][0] * TRANSPOSE;
+    int duration = melody[i][1];
+
+    if (note == 0) { // Pauza
+      noTone(buzzerPin);
+    } else {
+      tone(buzzerPin, note, duration);
+    }
+
+    delay(duration * 1.3); // Przerwa między nutami
+  }
+
+  noTone(buzzerPin); // Wyłącz buzzer po zakończeniu melodii
 }

@@ -1,3 +1,11 @@
 # Arduino - Gra Rozpal Ognisko
 
 Kod źródłowy: [warsztaty_harcerskie.ino](warsztaty_harcerskie.ino)
+
+## Części składowe zestawu
+
+- Mikrokontroler: [ESP-WROOM-32](https://forbot.pl/blog/leksykon/esp32)
+- Czujnik odległości: [Sharp GP2Y0A21YK0F](https://botland.com.pl/analogowe-czujniki-odleglosci/29-sharp-gp2y0a21yk0f-analogowy-czujnik-odleglosci-10-80cm-5904422304713.html)
+- [10-cio segmentowy moduł LED](https://pl.aliexpress.com/item/1005007095450799.html)
+- [Buzzer PCB](https://abc-rc.pl/pl/products/modul-buzzera-aktywnego-na-plytce-pcb-3-3v-5v-stan-wysoki-do-arduino-projektow-diy-i-robotyki-9715.html?gQT=1)
+- [Wyświetlacz OLED niebieski graficzny 1,3'' 128x64px I2C](https://botland.com.pl/wyswietlacze-oled/8867-wyswietlacz-oled-niebieski-graficzny-13-128x64px-i2c-v2-niebieskie-znaki-sh1106-5903351241182.html)
