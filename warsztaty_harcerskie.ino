@@ -34,20 +34,21 @@ const int numLeds = sizeof(ledPins) / sizeof(ledPins[0]);
 Preferences preferences;
 
 // Nuty i ich częstotliwości
-#define NOTE_A0  28
-#define NOTE_B1  62
-#define NOTE_D2  73
-#define NOTE_F2  87
-#define NOTE_G1  49
+#define NOTE_E4  330
+#define NOTE_FS4 370
+#define NOTE_G4  392
+#define NOTE_A4  440
+#define NOTE_B3  247
 
-#define TRANSPOSE 2
+#define TRANSPOSE 1
 
 // Struktura melodii: {nuta, czas trwania w ms}
 int melody[][2] = {
-  {NOTE_G1, 250}, {NOTE_B1, 250},                 // "Pło-nie"
-  {NOTE_D2, 500}, {NOTE_F2, 250}, {NOTE_D2, 250}, // "og-ni-sko"
-  {NOTE_B1, 500}, {NOTE_D2, 250}, {NOTE_B1, 250}, // "i szu-mią"
-  {NOTE_G1, 500}, {NOTE_A0, 500}                  // "knie-je"
+  {NOTE_E4, 250}, {NOTE_FS4, 250},      // E, Fis
+  {NOTE_G4, 500}, {NOTE_A4, 250},       // G, A
+  {NOTE_G4, 250}, {NOTE_FS4, 500},      // G, Fis
+  {NOTE_G4, 250}, {NOTE_FS4, 250},      // G, Fis
+  {NOTE_E4, 500}, {NOTE_B3, 500}        // E, B
 };
 
 // Liczba nut w melodii
