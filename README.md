@@ -9,3 +9,37 @@ Kod źródłowy: [warsztaty_harcerskie.ino](warsztaty_harcerskie.ino)
 - [10-cio segmentowy moduł LED](https://pl.aliexpress.com/item/1005007095450799.html)
 - [Buzzer PCB](https://abc-rc.pl/pl/products/modul-buzzera-aktywnego-na-plytce-pcb-3-3v-5v-stan-wysoki-do-arduino-projektow-diy-i-robotyki-9715.html?gQT=1)
 - [Wyświetlacz OLED niebieski graficzny 1,3'' 128x64px I2C](https://botland.com.pl/wyswietlacze-oled/8867-wyswietlacz-oled-niebieski-graficzny-13-128x64px-i2c-v2-niebieskie-znaki-sh1106-5903351241182.html)
+- dowolny tact switch - przycisk zwierny
+
+## Podłączenie układu
+
+### Moduł LED
+
+- z jednej strony wszystkich pinów `GND`
+- z drugiej strony najpierw rezystory 220Ohm, a następnie piny (w kolejności od koloru niebieskiego do czerwonego): `25, 26, 27, 14, 12, 13, 33, 32, 4, 2`
+
+### Czujnik odległości
+
+- `GND`
+- `VCC` -> `Vin` (mikrokontrolera) - tam jest napięcie 5V wymagane przez czujnik
+- SensorPin -> `34`
+
+### Wyświetlacz OLED 1,3''
+
+Magistrala I2C
+- `GND`
+- `VCC` -> `3v3`
+- `SCL` -> `21`
+- `SDA` -> `22`
+
+### Przycisk 
+
+- z jednej strony `GND`
+- z drugiej strony pin nr `15`
+
+### Buzzer
+
+- `GND`
+- `VCC` -> `3v3`
+- `IN` -> pin nr `5`
+
