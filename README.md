@@ -1,5 +1,13 @@
 # Arduino - Gra Rozpal Ognisko
 
+Gra polega na tym że wachlując ręką przed czujnikiem odległości symulujemy rozpalanie (rozdmuchiwanie) ogniska. 
+Przycisk startuje i resetuje grę. Czujnik odległości mierzy tempo zmian odległości i wylicza tempo wachlowania. Im szybszy ruch tym łatwiej rozpalić. Przerwanie machania sprawia, że ognisko przygasa. 
+
+Po osiągnięciu 100% odgrywany jest początek piosenki płonie ognisko oraz wyświetlany czas osiągnięty przez gracza. 
+
+Moduł zapamiętuje najkrótszy czas ukończenia gry.
+
+
 Kod źródłowy: [warsztaty_harcerskie.ino](warsztaty_harcerskie.ino)
 
 ## Części składowe zestawu
