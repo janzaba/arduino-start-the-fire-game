@@ -43,3 +43,9 @@ Magistrala I2C
 - `VCC` -> `3v3`
 - `IN` -> pin nr `5`
 
+## Okładka na pudełko
+
+W moim przypadku zastosowałem opakowanie po Wykałaczko-nitkach firmy Polydent. Na opakowanie wydrukowałem własną etykietę oraz wywierciłem odpowiednie otwory
+
+![Okładka](gra_rozpal_ognisko.png)
+
