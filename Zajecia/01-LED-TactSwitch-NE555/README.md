@@ -116,16 +116,11 @@ Bateria → rezystor (220Ω) → dioda LED → masa
 1. **Regulacja częstotliwości przez zmianę kondensatora lub rezystorów**  
    Wymień kondensator w układzie NE555 i obserwuj, jak zmienia się częstotliwość migania diody LED. Przydatny może okazać się kalkulator: 
 [https://www.build-electronic-circuits.com/circuit-calculator-conversion/555-timer-calculator/](https://www.build-electronic-circuits.com/circuit-calculator-conversion/555-timer-calculator/)
-![kalkulator-qr](./kalkulator-qr.png)
 
-2. **Sterowanie LED przyciskiem**  
-   Zbuduj układ, w którym krótkie przyciśnięcie przycisku zapala diodę LED, a kolejne ją gasi.
+<img src="./kalkulator-qr.png" alt="kalkulator-qr" width="200"/>
 
-3. **Układ z dwoma przyciskami**  
+2. **Układ z dwoma przyciskami**  
    Zaprojektuj układ, w którym jeden przycisk włącza diodę LED, a drugi ją wyłącza.
 
-4. **Zmiana częstotliwości migania przez przycisk**  
-   Zbuduj układ, w którym naciśnięcie przycisku zmienia częstotliwość migania LED (np. poprzez modyfikację układu rezystorów).
-
-5. **Sekwencja świetlna**  
-   Zaprojektuj układ, w którym kilka diod LED zapala się kolejno, tworząc efekt przesuwającego się światła.
+3. **Światła policyjne**  
+   Zaprojektuj układ z dwiema diodami, tak aby migały naprzemiennie.
