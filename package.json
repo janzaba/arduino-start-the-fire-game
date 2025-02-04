@@ -1,0 +1,17 @@
+{
+  "name": "warsztaty_harcerskie",
+  "version": "1.0.0",
+  "description": "Warsztaty z elektroniki",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-pdf": "node build-pdf.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "markdown-it": "^14.1.0",
+    "puppeteer": "^24.1.1"
+  }
+}

@@ -1,2 +1,4 @@
 .idea
 .DS_Store
+lessons-pdf/*.pdf
+node_modules

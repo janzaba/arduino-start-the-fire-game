@@ -84,7 +84,7 @@ Bateria → rezystor (220Ω) → dioda LED → masa
 >
 > W efekcie powstaje cykliczny efekt migania, zależny od wartości użytych rezystorów i kondensatora. 🔄
 
-![NE555](./NE555.png)
+![ne555](./ne555.png)
 
 ### Schemat połączenia
 ```  
