@@ -122,5 +122,16 @@ Bateria → rezystor (220Ω) → dioda LED → masa
 2. **Układ z dwoma przyciskami**  
    Zaprojektuj układ, w którym jeden przycisk włącza diodę LED, a drugi ją wyłącza.
 
+![solutuion-2](./solution_2.png)
+
+- R1 -> 1kΩ
+- R2 -> 1MΩ
+
 3. **Światła policyjne**  
    Zaprojektuj układ z dwiema diodami, tak aby migały naprzemiennie.
+
+![solutuion-3](./solution_3.png)
+
+- R1-R2: 1 kΩ
+- R3, R4 - w zależności od diody
+- C1: 1000 µF
