@@ -1,4 +1,4 @@
-# 🔌 **Warsztaty Elektroniki: Pierwszy Krok w Elektronice na Płytce Stykowej**
+# 🔌 **Warsztaty Elektroniki: Pierwsze kroki w elektronice**
 
 ## 🎯 Cel zajęć
 Nauczyć się podstaw elektroniki poprzez budowę prostych obwodów na płytce stykowej oraz zrozumieć działanie kluczowych elementów, takich jak dioda LED, rezystor, przycisk, kondensator i układ NE555.
@@ -83,6 +83,64 @@ Bateria → rezystor (220Ω) → dioda LED → masa
 > 3️⃣ Kondensator rozładowuje się aż do spadku poniżej 1/3 napięcia, co ponownie włącza LED.
 >
 > W efekcie powstaje cykliczny efekt migania, zależny od wartości użytych rezystorów i kondensatora. 🔄
+> 
+> ## Opis wyprowadzeń układu NE555
+>
+> Poniżej przedstawiono opis poszczególnych pinów NE555 wraz z wyjaśnieniem ich funkcji oraz wpływu na zachowanie całego układu:
+>
+> **Pin 1: GND (Ground)**
+> - **Funkcja:** Połączenie z masą układu.
+> - **Wpływ:** Ustala odniesienie napięciowe dla wszystkich sygnałów wewnętrznych NE555.
+>
+> **Pin 2: Trigger (Wyzwalanie)**
+> - **Funkcja:** Wejście wyzwalające cykl czasowy.
+> - **Wpływ:** Gdy napięcie na tym pinie spadnie poniżej 1/3 Vcc, wewnętrzny przerzutnik zostaje ustawiony, co inicjuje cykl czasowy – w trybie monostabilnym uruchamia impuls, a w trybie astabilnym rozpoczyna ładowanie kondensatora.
+>
+> **Pin 3: Output (Wyjście)**
+> - **Funkcja:** Wyjście sygnału sterującego.
+> - **Wpływ:** W zależności od stanu wewnętrznego przerzutnika, pin ten generuje stan wysoki lub niski, sterując zewnętrznym obciążeniem, np. diodą LED.
+>
+> **Pin 4: Reset**
+> - **Funkcja:** Wejście resetujące układ.
+> - **Wpływ:** Obniżenie napięcia na tym pinie resetuje przerzutnik, niezależnie od stanu Triggera czy Threshold, co powoduje natychmiastowe wyłączenie wyjścia (Pin 3). Zwykle podłączony bezpośrednio do Vcc, jeśli reset nie jest używany.
+>
+> **Pin 5: Control Voltage (Napięcie sterujące)**
+> - **Funkcja:** Pozwala na modyfikację progów wyzwalania i resetowania.
+> - **Wpływ:** Umożliwia zewnętrzną regulację wewnętrznych progów (1/3 i 2/3 Vcc) poprzez podłączenie kondensatora filtrującego do masy, co pomaga zredukować szumy i stabilizować działanie układu.
+>
+> **Pin 6: Threshold (Próg)**
+> - **Funkcja:** Monitoruje napięcie kondensatora w obwodzie RC.
+> - **Wpływ:** Gdy napięcie na tym pinie osiągnie 2/3 Vcc, wewnętrzny komparator resetuje przerzutnik, co powoduje przełączenie stanu wyjścia (Pin 3) na niski oraz rozpoczęcie rozładowania kondensatora.
+>
+> **Pin 7: Discharge (Rozładowanie)**
+> - **Funkcja:** Służy do rozładowania kondensatora poprzez wewnętrzny tranzystor.
+> - **Wpływ:** W trybie astabilnym pin ten umożliwia szybkie rozładowanie kondensatora, co ustala czas trwania cyklu oscylacji. W trybie monostabilnym pomaga w szybkim zakończeniu impulsu.
+>
+> **Pin 8: Vcc (Zasilanie)**
+> - **Funkcja:** Podłączenie do dodatniego źródła zasilania.
+> - **Wpływ:** Dostarcza napięcie (zwykle w zakresie 4,5–16V), od którego zależą wszystkie progi i działanie układu NE555.
+>
+> ---
+>
+> ### Jak wyprowadzenia wpływają na działanie układu?
+>
+> - **Sterowanie cyklem czasowym:**  
+>   Piny **Trigger (2)** i **Threshold (6)** ustalają moment rozpoczęcia i zakończenia cyklu ładowania kondensatora. To od nich zależy, kiedy wyjście (Pin 3) zmieni stan, inicjując impuls w trybie monostabilnym lub oscylację w trybie astabilnym.
+>
+> - **Generowanie sygnału wyjściowego:**  
+>   Pin **Output (3)** reaguje na zmiany wewnętrznego przerzutnika, co bezpośrednio steruje elementami zewnętrznymi, np. zapalaniem lub miganiem diody LED.
+>
+> - **Resetowanie układu:**  
+>   Pin **Reset (4)** umożliwia natychmiastowe przerwanie cyklu czasowego, co może być wykorzystane do ręcznego sterowania lub synchronizacji układu z innymi elementami.
+>
+> - **Stabilizacja i regulacja:**  
+>   Pin **Control Voltage (5)** pozwala na dostrojenie poziomów wyzwalania, co ma znaczenie przy precyzyjnej regulacji czasu impulsów, zwłaszcza w aplikacjach wymagających dużej stabilności.
+>
+> - **Ładowanie i rozładowanie kondensatora:**  
+>   Pin **Discharge (7)** umożliwia szybkie rozładowanie kondensatora, co wpływa na częstotliwość oscylacji w trybie astabilnym. W połączeniu z rezystorami, jego działanie decyduje o czasie trwania impulsów.
+>
+> Dzięki współdziałaniu wszystkich tych wyprowadzeń, układ NE555 może być stosowany w wielu konfiguracjach – jako generator impulsów, timer opóźniający, czy przełącznik – dostosowując swoje działanie do konkretnych potrzeb aplikacji.
+
 
 ![ne555](./ne555.png)
 
